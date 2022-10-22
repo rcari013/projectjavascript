@@ -1,19 +1,21 @@
 //Author: Jeanette Eldredge
 var allData = [];
-var male = [];
-var female = [];
-var last = [];
+var european_country = [];
+var asian_country = [];
+var state_in_america = [];
 function organize(list)
 {
     allData.forEach(element => {
-        male.push(element.maleName);
-        female.push(element.femaleName);
-        last.push(element.lastName);
+        european_country.push(element.europeanCountry);
+        asian_country.push(element.asianCountry);
+        state_in_america.push(element.state_in_america);
     });
     
 }
 
-const url = 'https://raw.githubusercontent.com/eldredgj10/JavaScript/master/Project/api/names.json';
+const url = 'https://raw.githubusercontent.com/rcari013/projectjavascript/main/api/countries_and_states.json';
+
+
 fetch(url)
     .then((response) => {
     if (response.ok) {
@@ -30,7 +32,7 @@ fetch(url)
 
 function reset()
 {
-    document.querySelector('#names').innerHTML = '';
+    document.querySelector('#countries_and_states').innerHTML = '';
 }
 
 
@@ -40,22 +42,22 @@ function getRandomInt(max) {
 
 function refuel(country_or_state)
 {
-    if (country_or_state == 'm')
+    if (country_or_state == 'e')
     {
         allData.forEach(element => {
-            male.push(element.maleName);
+            european_country.push(element.europeanCountry);
         });
     }
-    else if (country_or_state == 'f')
+    else if (country_or_state == 'a')
     {
         allData.forEach(element => {
-            female.push(element.femaleName);
+            asian_country.push(element.asianCountry);
         });
     }
     else
     {
         allData.forEach(element => {
-            last.push(element.lastName);
+            state_in_america.push(element.state_in_america);
         });
     }
 }
@@ -66,33 +68,33 @@ function generate()
     let country_or_state = '';
     let generateNum = 0;
 
-    if (selection == "maleName") {
-        if (male.length == 1)
+    if (selection == "europeanCountry") {
+        if (european_country.length == 1)
         {
-            refuel("m");
+            refuel("e");
         }
-        generateNum = getRandomInt(male.length)
-        country_or_state = male[generateNum];
-        male.splice(generateNum, 1);
+        generateNum = getRandomInt(european_country.length)
+        country_or_state = european_country[generateNum];
+        european_country.splice(generateNum, 1);
     }
-    else if (selection == "femaleName")
+    else if (selection == "asianCountry")
     {
-        if (female.length == 1)
+        if (asian_country.length == 1)
         {
-            refuel("f");
+            refuel("a");
         }
-        generateNum = getRandomInt(female.length)
-        country_or_state = female[generateNum];
-        female.splice(generateNum, 1);
+        generateNum = getRandomInt(asian_country.length)
+        country_or_state = asian_country[generateNum];
+        asian_country.splice(generateNum, 1);
     }
     else {
-        if (last.length == 1)
+        if (state_in_america.length == 1)
         {
             refuel("l");
         }
-        generateNum = getRandomInt(last.length)
-        country_or_state = last[generateNum];
-        last.splice(generateNum, 1);
+        generateNum = getRandomInt(state_in_america.length)
+        country_or_state = state_in_america[generateNum];
+        state_in_america.splice(generateNum, 1);
     }
     reset();
     output(country_or_state);
@@ -101,7 +103,7 @@ function generate()
 function output(country_or_state)
 {
     const html = `<h3>${country_or_state}</h3>`;
-    document.querySelector('#names').innerHTML = html;
+    document.querySelector('#countries_and_states').innerHTML = html;
 }
 
 const button = document.querySelector('#Generate');

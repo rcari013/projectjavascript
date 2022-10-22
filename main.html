@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Romel Project in Javascript</title>
+    <link href="https://fonts.googleapis.com/css?family=Kalam&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+
+<body>
+    <nav>
+        <ul id="menu">
+            <li><a id="toggleMenu">&equiv;</a></li>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Lesson 2</a></li>
+            <li><a href="#">Lesson 3</a></li>
+            <li><a href="#">Lesson 4</a></li>
+            <li><a href="#">Lesson 5</a></li>
+            <li><a href="#" class="active">Final Project</a></li>
+        </ul>
+    </nav>
+    <header>
+        <h1>Country and State Random Generator</h1>
+    </header>
+    <main>
+        <section>
+            <h2>
+                Select a Continent or United States of America:
+            </h2>
+        </section>
+        <hr>
+        <section>
+            <p>
+                Choose: 
+                <select id="sortBy">
+                    <option value="europeanCountry">European Country</option>
+                    <option value="asianCountry">Asian Country</option>
+                    <option value="state_in_america">United States of America States</option>
+                </select>
+            </p>
+            <div id="countries_and_states">
+            </div>
+            <div>
+                <input type="button" id="Generate" value="Generate">
+            </div>
+        </section>
+    </main>
+    <footer>
+        &copy;<span id="year"></span> | Country and State in America Random Generator| Final Project
+    </footer>
+    <script src="scripts/main.js"></script>
+    <script src="scripts/Project.js"></script>
+</body>
+
+</html>
